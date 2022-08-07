@@ -1,6 +1,6 @@
 export const makeConf = (ruleName, options) => {
   return {
-    plugins: ['./'],
+    plugins: ['./src'],
     rules: {
       [ruleName]: [true, ...(options ? [options] : [])],
     },

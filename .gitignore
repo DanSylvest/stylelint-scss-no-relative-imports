@@ -3,3 +3,4 @@
 .yarn/
 coverage
 node_modules/
+dist

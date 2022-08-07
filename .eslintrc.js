@@ -10,7 +10,7 @@ module.exports = {
     'plugin:prettier/recommended',
     'plugin:import/recommended',
   ],
-  plugins: ['no-relative-import-paths', 'unicorn', 'unused-imports', 'import', 'prettier'],
+  plugins: ['unicorn', 'unused-imports', 'import', 'prettier'],
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
@@ -47,10 +47,6 @@ module.exports = {
         code: 120,
       },
     ],
-    'no-relative-import-paths/no-relative-import-paths': [
-      'error',
-      { allowSameFolder: true, rootDir: 'myc-settings/src' },
-    ],
     'unicorn/no-for-loop': 'off',
     'unicorn/prevent-abbreviations': 'off',
     'unicorn/prefer-module': 'off',
@@ -78,18 +74,6 @@ module.exports = {
         'newlines-between': 'always',
         alphabetize: { order: 'asc', caseInsensitive: true },
         groups: ['parent', 'external', 'builtin', 'object', 'type', 'index', 'internal', 'sibling'],
-      },
-    ],
-    'no-restricted-imports': [
-      'error',
-      {
-        patterns: [
-          {
-            group: ['definitions/*', 'definitions/**/*'],
-            message:
-              'These definitions should not be using. Instead use lit/lit-element, lit/lit-directives, lit/lit-decorators.',
-          },
-        ],
       },
     ],
   },

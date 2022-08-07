@@ -1,9 +1,8 @@
 import getOutput from '../../../utils/getOutput.js';
+import getRootPath from '../../../utils/getRootPath';
 import { lint } from '../../../utils/lint.js';
 import { makeConf } from '../../../utils/makeConf.js';
 import ruleName from '../ruleName.js';
-
-import getRootPath from './../../../utils/getRootPath';
 
 jest.mock('../../../utils/getRootPath');
 

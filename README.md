@@ -30,4 +30,4 @@ Create the .stylelintrc.json config file (or open the existing one), add styleli
 
 ### `@`-import
 
-- [`no-relative-imports`](./rules/no-relative-imports/README.md): This is the rule which check and fix import path if it go top to the directories relativetely.
+- [`no-relative-imports`](src/rules/no-relative-imports/README.md): This is the rule which check and fix import path if it go top to the directories relativetely.

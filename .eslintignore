@@ -1,4 +1,4 @@
-**/lit/**/*.d.ts
-**/definitions/*.d.ts
 !.stylelintrc.js
 !.eslintrc.js
+dist
+**/__test__/**/*.js

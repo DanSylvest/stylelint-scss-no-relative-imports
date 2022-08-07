@@ -2,31 +2,43 @@
   "name": "stylelint-scss-no-relative-imports",
   "version": "1.0.1",
   "description": "A rule which allow fix and warn relative imports of SCSS for Stylelint",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "npx jest --coverage",
     "lint": "npx eslint '**/*.js'",
     "lint:fix": "npx eslint '**/*.js' --fix",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "prebuild": "rimraf dist",
+    "build": "babel src --out-dir dist",
+    "release": "np",
+    "prepublishOnly": "npm run build"
   },
+  "files": [
+    "dist/**/*.js",
+    "!**/__tests__/**"
+  ],
+  "type": "commonjs",
   "author": "Alexey Chichenkov",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.18.10",
     "@babel/preset-env": "^7.18.10",
+    "@babel/cli": "^7.15.7",
     "babel-jest": "^28.1.3",
+    "np": "^7.5.0",
     "eslint": "^8.0.1",
     "eslint-config-prettier": "^8.5.0",
     "eslint-config-standard": "latest",
     "eslint-plugin-import": "^2.25.2",
-    "eslint-plugin-no-relative-import-paths": "^1.3.4",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-unicorn": "^43.0.2",
     "eslint-plugin-unused-imports": "^2.0.0",
     "husky": "^8.0.1",
     "jest": "^28.1.3",
-    "jest-preset-stylelint": "^5.0.4"
+    "jest-preset-stylelint": "^5.0.4",
+    "rimraf": "^3.0.2",
+    "stylelint": "^14.9.1"
   },
   "dependencies": {
     "app-root-path": "^3.0.0"
@@ -39,7 +51,7 @@
     "clearMocks": true,
     "collectCoverage": false,
     "collectCoverageFrom": [
-      "rules/**/*.js"
+      "src/rules/**/*.js"
     ],
     "coverageDirectory": "./coverage/",
     "coverageThreshold": {
@@ -52,9 +64,9 @@
     },
     "testEnvironment": "node",
     "roots": [
-      "rules"
+      "src/rules"
     ],
-    "testRegex": "rules/.*/__tests__/.*\\.js$"
+    "testRegex": "src/rules/.*/__tests__/.*\\.js$"
   },
   "husky": {
     "hooks": {

@@ -1,0 +1,4 @@
+**/lit/**/*.d.ts
+**/definitions/*.d.ts
+!.stylelintrc.js
+!.eslintrc.js

@@ -1,7 +1,5 @@
 # stylelint-scss-no-relative-imports
 
-![Coveralls](https://img.shields.io/coveralls/github/DanSylvest/stylelint-scss-no-relative-imports)
-
 A rule which allow fix and warn relative imports of SCSS for Stylelint
 ## Installation
 

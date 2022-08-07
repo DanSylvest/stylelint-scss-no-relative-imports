@@ -24,13 +24,14 @@ const rule = (primaryOption, options, context) => {
     }
 
     const { rootPath = '.' } = options ?? {};
-
     const isAutoFixing = Boolean(context.fix);
 
     postcssRoot.walkAtRules('import', rule => {
-      const _projectRootPath = path.normalize(getRootPath());
-      const _rootPath = path.normalize(rootPath);
-      const _fileDir = path.dirname(path.normalize(postcssResult.opts.from));
+      const from = path.normalize(postcssResult.opts.from);
+
+      if (path.extname(from) !== '.scss') {
+        return;
+      }
 
       const result = rule.params.match(/(["'])(.*?)["'](.*)/m);
       if (!result) {
@@ -45,8 +46,8 @@ const rule = (primaryOption, options, context) => {
       const _importPath = path.normalize(importPath);
       const [firstHop] = _importPath.split(path.sep);
       if (firstHop === '..') {
-        const resolvedImport = path.resolve(_fileDir, _importPath);
-        const resolvedRoot = path.resolve(_projectRootPath, _rootPath);
+        const resolvedImport = path.resolve(path.dirname(from), _importPath);
+        const resolvedRoot = path.resolve(path.normalize(getRootPath()), path.normalize(rootPath));
         const resolved = resolvedImport.replace(resolvedRoot, '').slice(1);
 
         const fixed = `${quote}${resolved}${quote}${rest}`;

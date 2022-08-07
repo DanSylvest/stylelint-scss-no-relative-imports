@@ -1,16 +1,16 @@
 {
-  "name": "stylelint-import-tools",
+  "name": "stylelint-scss-no-relative-imports",
   "version": "1.0.0",
-  "description": "",
+  "description": "A rule which allow fix and warn relative imports of SCSS for Stylelint",
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "lint": "npm eslint '**/*.{js} --fix",
+    "lint": "npx eslint '**/*.js'",
+    "lint:fix": "npx eslint '**/*.js' --fix",
     "prepare": "husky install"
   },
-  "type": "module",
-  "author": "",
-  "license": "ISC",
+  "author": "Alexey Chichenkov",
+  "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.18.10",
     "@babel/preset-env": "^7.18.10",

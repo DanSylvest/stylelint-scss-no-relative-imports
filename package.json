@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "npm eslint '**/*.{js,ts} --fix",
+    "test": "jest",
+    "lint": "npm eslint '**/*.{js} --fix",
     "prepare": "husky install"
   },
   "type": "module",
@@ -31,5 +31,32 @@
   },
   "dependencies": {
     "app-root-path": "^3.0.0"
+  },
+  "jest": {
+    "preset": "jest-preset-stylelint",
+    "clearMocks": true,
+    "collectCoverage": false,
+    "collectCoverageFrom": [
+      "rules/**/*.js"
+    ],
+    "coverageDirectory": "./coverage/",
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    },
+    "testEnvironment": "node",
+    "roots": [
+      "rules"
+    ],
+    "testRegex": "rules/.*/__tests__/.*\\.js$"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint && test"
+    }
   }
 }

@@ -10,6 +10,7 @@ jest.mock('../../../utils/getRootPath');
 describe('testRelativeImports', () => {
   const FILE_PATH = '/home/user/project/src/styles/one/two/main.scss';
   const PROJECT_PATH = '/home/user/project';
+  const PLUGIN_REL_PATH = 'src/styles';
 
   beforeAll(() => {
     getRootPath.mockReturnValue(PROJECT_PATH);
@@ -30,7 +31,6 @@ describe('testRelativeImports', () => {
   });
 
   it('should fix relative imports with options', async () => {
-    const PLUGIN_REL_PATH = 'src/styles';
     const code = `
       @import '../../shared';
       @import '../shared2';
@@ -132,6 +132,22 @@ describe('testRelativeImports', () => {
       codeFilename: FILE_PATH,
       code,
       config: makeConf(ruleName, { notExistsOpt: '' }),
+    });
+
+    expect(warnings).toHaveLength(0);
+  });
+
+  it('should return if no .scss ext', async () => {
+    const FILE_PATH = '/home/user/project/src/styles/one/two/main.css';
+
+    const code = `
+      @import ""
+    `;
+
+    const { warnings } = await lint({
+      codeFilename: FILE_PATH,
+      code,
+      config: makeConf(ruleName),
     });
 
     expect(warnings).toHaveLength(0);

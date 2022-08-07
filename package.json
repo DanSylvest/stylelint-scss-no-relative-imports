@@ -4,7 +4,7 @@
   "description": "A rule which allow fix and warn relative imports of SCSS for Stylelint",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "npx jest --coverage",
     "lint": "npx eslint '**/*.js'",
     "lint:fix": "npx eslint '**/*.js' --fix",
     "prepare": "husky install"

@@ -26,7 +26,7 @@ Set root path for plugin.
     "stylelint-scss-no-relative-imports/no-relative-imports": [
       true,
       {
-        "rootPath": 'src/someNestedPath'
+        "rootPath": "src/someNestedPath"
       }
     ]
   }
